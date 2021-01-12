@@ -31,25 +31,6 @@ public:
   };
   enum InputType { INVALID, CAMERA, VIDEO_FILE, IMAGE_LIST };
 
-  void write(FileStorage &fs) const // Write serialization for this class
-  {
-    fs << "{"
-       << "BoardSize_Width" << boardSize.width << "BoardSize_Height"
-       << boardSize.height << "Square_Size" << squareSize << "Calibrate_Pattern"
-       << patternToUse << "Calibrate_NrOfFrameToUse" << nrFrames
-       << "Calibrate_FixAspectRatio" << aspectRatio
-       << "Calibrate_AssumeZeroTangentialDistortion" << calibZeroTangentDist
-       << "Calibrate_FixPrincipalPointAtTheCenter" << calibFixPrincipalPoint
-
-       << "Write_DetectedFeaturePoints" << writePoints
-       << "Write_extrinsicParameters" << writeExtrinsics << "Write_gridPoints"
-       << writeGrid << "Write_outputFileName" << outputFileName
-
-       << "Show_UndistortedImage" << showUndistorsed
-
-       << "Input_FlipAroundHorizontalAxis" << flipVertical << "Input_Delay"
-       << delay << "Input" << input << "}";
-  }
   void read(const FileNode &node) // Read serialization for this class
   {
     node["BoardSize_Width"] >> boardSize.width;
